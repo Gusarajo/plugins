@@ -1,20 +1,22 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Blank
+      Pluggins 
     </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+  <ion-button (click)="getCurrentLocation()">Get Current Position</ion-button>
+  <br>
+  Latitude: {{ latitude }}<br>
+  Longitude: {{ longitude }}<br>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+  <ion-button (click)="showAlert()">Mostrar alerta</ion-button>
+<br>
+<ion-button (click)="checkConnection()">Comprobar conexion</ion-button>
+<br>
+  Connectado: {{ conectado }}<br>
+  conexion: {{ tipoConexion }}<br>
+
 </ion-content>
