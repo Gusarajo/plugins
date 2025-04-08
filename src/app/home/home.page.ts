@@ -3,6 +3,8 @@ import { IonHeader, IonToolbar, IonTitle, IonContent, IonButton } from '@ionic/a
 import { GeolocationService } from '../geolocation.service';
 import { DialogService } from '../dialog.service';
 import { Network } from '@capacitor/network';
+import { Toast } from '@capacitor/toast';
+import { Camera, CameraResultType } from '@capacitor/camera';
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -11,11 +13,11 @@ import { Network } from '@capacitor/network';
 })
 export class HomePage {
   latitude: number = 0;
-  longitude: number = 0 ;
+  longitude: number = 0;
   conectado: boolean = false;
   tipoConexion: string = '';
 
-  constructor(private geolocationService: GeolocationService, private dialogservice: DialogService) {}
+  constructor(private geolocationService: GeolocationService, private dialogservice: DialogService) { }
 
   async getCurrentLocation() {
     try {
@@ -30,13 +32,34 @@ export class HomePage {
     this.dialogservice.showAlert('Alerta', 'Esta es una alerta ');
   }
 
-  
+
   async checkConnection() {
     const status = await Network.getStatus();
     this.conectado = status.connected;
     this.tipoConexion = status.connectionType;
-    console.log('Conectado:', status.connected);     
-    console.log('Tipo de conexión:', status.connectionType); 
+    console.log('Conectado:', status.connected);
+    console.log('Tipo de conexión:', status.connectionType);
   }
-}
+  async Toast() {
+    try {
+      await Toast.show({
+        text: 'Hola este es un toast!',
+      });
+    } catch (error) {
+      console.error('Error mostrando toast:', error);
+    }
+  }
+  takePhoto = async () => {
 
+    const image = await Camera.getPhoto(
+
+      {
+        quality: 90,
+        allowEditing: false,
+        resultType: CameraResultType.DataUrl,
+      });
+    console.log(image.dataUrl);
+  }
+
+
+}

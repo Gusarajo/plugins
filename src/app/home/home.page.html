@@ -1,7 +1,7 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Pluggins 
+      Pluggins
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -13,10 +13,12 @@
   Longitude: {{ longitude }}<br>
 
   <ion-button (click)="showAlert()">Mostrar alerta</ion-button>
-<br>
-<ion-button (click)="checkConnection()">Comprobar conexion</ion-button>
-<br>
+  <br>
+  <ion-button (click)="checkConnection()">Comprobar conexion</ion-button>
+  <br>
   Connectado: {{ conectado }}<br>
   conexion: {{ tipoConexion }}<br>
-
+  <ion-button (click)="Toast()"> Toast</ion-button>
+  <br>
+  <ion-button expand="full" (click)="takePhoto()"> tomar foto</ion-button>
 </ion-content>
